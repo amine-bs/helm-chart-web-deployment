@@ -90,7 +90,7 @@ probe:
 
 s3:
   enabled: true
-  existingSecret: "myshinyapp-s3"
+  existingSecret: "myapp-s3"
   endpoint: ""
   defaultRegion: ""
   accessKeyId: ""
@@ -100,11 +100,12 @@ s3:
 postgresql:
   enabled: true
   auth:
-    username: ""
-    database: ""
-    password: ""
-    postgresPassword: ""
-    existingSecret: ""
+    username: myusername
+    database: defaultdb
+    existingSecret: myapp-postgresql
   containerPorts:
     postgresql: 5432
-  fullnameOverride: ""
+  fullnameOverride: postgresql-db
+  primary:
+    persistence:
+      size: 2Gi
